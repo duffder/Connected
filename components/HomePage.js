@@ -6,6 +6,8 @@ import StatusBar from './StatusBar';
 import ActionButton from './ActionButton';
 import ListItem from './ListItem';
 import styles from '../styles';
+import StackNavigator from 'react-navigation';
+import Map from './Map';
 const {
     AsyncStorage,
     ListView,
@@ -16,11 +18,12 @@ const {
     KeyboardAvoidingView,
     Touchablehighlight,
     Alert,
-    StackNavigator,
     Button
 } = ReactNative;
 
-class HomePage extends Component {
+
+
+class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -42,14 +45,24 @@ class HomePage extends Component {
       getRef() {
         return firebase.database().ref();
       }
+      static navigationOptions = {
+        title: 'welcome',
+      };
 
       render() {
         const { navigate } = this.props.navigation;
         return (
           <KeyboardAvoidingView style={styles.listContainer} behavior="padding" >
             <StatusBar onPress={this.userLogout.bind(this)} title="Home" />
-            <Button title="Til app" onPress={() => navigate('App', { name: 'App'})}/>
+            <Button
+        title="Go to Jane's profile"
+        onPress={() =>
+          Actions.Map()
+        }
+      />
             </KeyboardAvoidingView>
+            
+            
             
 
           
