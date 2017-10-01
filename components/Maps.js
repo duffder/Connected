@@ -59,9 +59,10 @@ class Maps extends React.Component {
         }
         
       render() {
+        const { navigate } = this.props.navigation;
           return (
             
-            <View style={styles.container}>
+            <View style={styles.mapContainer}>
     
      
            
@@ -102,24 +103,3 @@ class Maps extends React.Component {
       }
       }
       module.exports = Maps;
-    
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-    
-      map: {
-        left:0,
-        right:0,
-        top:0,
-        bottom:0,
-        position:'absolute'
-    
-      },
-    
-    });
-
-
