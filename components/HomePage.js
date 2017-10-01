@@ -7,7 +7,8 @@ import ActionButton from './ActionButton';
 import ListItem from './ListItem';
 import styles from '../styles';
 import StackNavigator from 'react-navigation';
-import Map from './Map';
+
+
 const {
     AsyncStorage,
     ListView,
@@ -18,7 +19,7 @@ const {
     KeyboardAvoidingView,
     Touchablehighlight,
     Alert,
-    Button
+    Button,
 } = ReactNative;
 
 
@@ -49,17 +50,43 @@ class HomePage extends React.Component {
         title: 'welcome',
       };
 
+
+       goMaps() {
+        try {
+          Alert.alert("Maps")
+          Actions.Maps();
+        } catch (error) {
+          console.log('error: ' + error.message);
+        }
+      }
+    
+
+
+      
+
       render() {
         const { navigate } = this.props.navigation;
         return (
           <KeyboardAvoidingView style={styles.listContainer} behavior="padding" >
             <StatusBar onPress={this.userLogout.bind(this)} title="Home" />
+
+           
             <Button
         title="Go to Jane's profile"
         onPress={() =>
-          Actions.Map()
+         
+         //Alert.alert('lol')
+         Actions.Maps()
         }
       />
+
+      <Button
+        title="Show map"
+
+        onPress={this.goMaps.bind(this)()} title="Maps"  
+      />
+
+
             </KeyboardAvoidingView>
             
             
