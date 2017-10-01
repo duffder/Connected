@@ -7,7 +7,6 @@ import ActionButton from './ActionButton';
 import ListItem from './ListItem';
 import styles from '../styles';
 import StackNavigator from 'react-navigation';
-import * as firebase from 'firebase';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps'
 

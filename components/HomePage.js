@@ -46,6 +46,7 @@ class HomePage extends React.Component {
       getRef() {
         return firebase.database().ref();
       }
+      //Router flux fis. I toppen
       static navigationOptions = {
         title: 'welcome',
       };
@@ -71,19 +72,11 @@ class HomePage extends React.Component {
             <StatusBar onPress={this.userLogout.bind(this)} title="Home" />
 
            
-            <Button
-        title="Go to Jane's profile"
-        onPress={() =>
-         
-         //Alert.alert('lol')
-         Actions.Maps()
-        }
-      />
+            
 
       <Button
-        title="Show map"
-
-        onPress={this.goMaps.bind(this)()} title="Maps"  
+      title="maps"
+        onPress={() => Actions.Maps()} 
       />
 
 

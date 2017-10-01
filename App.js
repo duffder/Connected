@@ -4,6 +4,7 @@ import {Router, Scene} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import Authentication from './components/Authentication';
 import HomePage from './components/HomePage';
+import Maps from './components/Maps';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBuseOK4Mrcl3miu_efGzfYaw6yjURHjmo",
@@ -52,6 +53,14 @@ export default class App extends React.Component {
             initial={this.state.hasToken}
             key='HomePage'
             title='Home Page'
+            />
+            <Scene
+            //Det er her det sner.
+            component={Maps}
+            hideNavBar={false}
+            //initial={this.state.hasToken}
+            key='Maps'
+            title='Maps'
             />
             </Scene>
             </Router>
