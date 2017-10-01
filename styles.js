@@ -13,7 +13,7 @@ var styles = StyleSheet.create({
   },
   listContainer: {
     backgroundColor: '#f2f2f2',
-    flex: 1
+    flex: 1,
   },
   listview: {
     flex: 1,
@@ -148,7 +148,13 @@ var styles = StyleSheet.create({
   buttonText: {
     padding: 20,
     color: 'white'
+  },
+  button: {
+    top: 500,
+    width: 380,
+    backgroundColor: '#2196F3',
   }
+  
   
 })
 module.exports = styles

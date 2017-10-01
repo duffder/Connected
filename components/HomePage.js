@@ -50,19 +50,6 @@ class HomePage extends React.Component {
       static navigationOptions = {
         title: 'Connected',
       };
-
-
-       goMaps() {
-        try {
-          Alert.alert("Maps")
-          Actions.Maps();
-        } catch (error) {
-          console.log('error: ' + error.message);
-        }
-      }
-    
-
-
       
 
       render() {
@@ -70,14 +57,19 @@ class HomePage extends React.Component {
         return (
           <KeyboardAvoidingView style={styles.listContainer} behavior="padding" >
             <StatusBar onPress={this.userLogout.bind(this)} title="Home" />
+            <View style={style=styles.button}>
+            <Button
+            onPress={() => Actions.Maps()} 
+            title="Maps"
+            color="white"
+            
+      />
+            </View>
 
            
             
 
-      <Button
-      title="Maps"
-        onPress={() => Actions.Maps()} 
-      />
+      
 
 
             </KeyboardAvoidingView>
