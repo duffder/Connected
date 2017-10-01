@@ -48,7 +48,7 @@ class HomePage extends React.Component {
       }
       //Router flux fis. I toppen
       static navigationOptions = {
-        title: 'welcome',
+        title: 'Connected',
       };
 
 
@@ -75,7 +75,7 @@ class HomePage extends React.Component {
             
 
       <Button
-      title="maps"
+      title="Maps"
         onPress={() => Actions.Maps()} 
       />
 

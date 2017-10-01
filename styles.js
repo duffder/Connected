@@ -111,22 +111,44 @@ var styles = StyleSheet.create({
   alignRight: {
     flex: 1
   },
-
-  mapContainer: {
-    flex: 1,
-    backgroundColor: '#fff',
+  radius: {
+    height: 50,
+    width: 50,
+    borderRadius: 50 / 2,
+    overflow: 'hidden',
+    backgroundColor: 'rgba(0, 122, 255, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 112, 255, 0.3)',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
-
+  marker: {
+    height: 20,
+    width: 20,
+    borderWidth: 3,
+    borderColor: 'white',
+    borderRadius: 20 / 2,
+    overflow: 'hidden',
+    backgroundColor: '#007AFF'
+  },
+  container: {
+    flex: 4,
+    justifyContent: 'space-between',
+    backgroundColor: '#f9f9f9',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   map: {
-    left:0,
-    right:0,
-    top:0,
-    bottom:0,
-    position:'absolute'
-
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 200,
+    position: 'absolute'
   },
+  buttonText: {
+    padding: 20,
+    color: 'white'
+  }
   
 })
 module.exports = styles
