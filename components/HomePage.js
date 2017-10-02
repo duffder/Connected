@@ -4,7 +4,6 @@ import {Actions} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import StatusBar from './StatusBar';
 import ActionButton from './ActionButton';
-import ListItem from './ListItem';
 import styles from '../styles';
 import StackNavigator from 'react-navigation';
 
@@ -55,16 +54,16 @@ class HomePage extends React.Component {
       render() {
         const { navigate } = this.props.navigation;
         return (
-          <KeyboardAvoidingView style={styles.listContainer} behavior="padding" >
+          <KeyboardAvoidingView style={styles.listContainer} >
             <StatusBar onPress={this.userLogout.bind(this)} title="Home" />
             <View style={style=styles.button}>
             <Button
-            onPress={() => Actions.Maps()} 
+            onPress={ () => Actions.Maps()} 
             title="Maps"
             color="white"
-            
       />
             </View>
+            
 
            
             

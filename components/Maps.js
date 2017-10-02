@@ -4,7 +4,6 @@ import {Actions} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import StatusBar from './StatusBar';
 import ActionButton from './ActionButton';
-import ListItem from './ListItem';
 import styles from '../styles';
 import StackNavigator from 'react-navigation';
 import { StyleSheet, Text, View, Dimensions, Alert, Button, TouchableHighlight } from 'react-native';

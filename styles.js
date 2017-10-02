@@ -18,15 +18,6 @@ var styles = StyleSheet.create({
   listview: {
     flex: 1,
   },
-  li: {
-    backgroundColor: '#fff',
-    borderBottomColor: '#eee',
-    borderColor: 'transparent',
-    borderWidth: 1,
-    paddingLeft: 16,
-    paddingTop: 14,
-    paddingBottom: 16,
-  },
   liContainer: {
     flex: 2,
   },
@@ -55,6 +46,8 @@ var styles = StyleSheet.create({
   statusbar: {
     backgroundColor: '#fff',
     height: 22,
+    flex: 1,
+    justifyContent: 'flex-start'
   },
   center: {
     textAlign: 'center',
@@ -150,8 +143,9 @@ var styles = StyleSheet.create({
     color: 'white'
   },
   button: {
-    top: 500,
-    width: 380,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    flex: 1,
     backgroundColor: '#2196F3',
   }
   
