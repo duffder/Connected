@@ -26,7 +26,7 @@ const {
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = {text: '',};
   }
       async userLogout() {
         try {
