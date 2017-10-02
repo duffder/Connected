@@ -24,15 +24,10 @@ const {
 
 
 class HomePage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          dataSource: new ListView.DataSource({
-            rowHasChanged: (row1, row2) => row1 !== row2,
-          })
-        };
-        this.itemsRef = this.getRef().child('items');
-      }
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
       async userLogout() {
         try {
           await AsyncStorage.removeItem('id_token');
@@ -56,14 +51,24 @@ class HomePage extends React.Component {
         return (
           <KeyboardAvoidingView style={styles.listContainer} >
             <StatusBar onPress={this.userLogout.bind(this)} title="Home" />
+            <Text style={styles.homepageText}>Name: <TextInput
+          style={{height: 40, width: 300, alignItems: 'center'}}
+          placeholder="Type in here!"
+          onChangeText={(text) => this.setState({text})}
+        /> </Text>
+            <Text style={styles.homepageText}>Phone: </Text>
+            <Text style={styles.homepageText}>Home City: </Text>
+            <Text style={styles.homepageText}>Sex: </Text>
+
             <View style={style=styles.button}>
+              
             <Button
             onPress={ () => Actions.Maps()} 
             title="Maps"
             color="white"
       />
             </View>
-            
+
 
            
             

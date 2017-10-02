@@ -135,7 +135,7 @@ var styles = StyleSheet.create({
     left: 0,
     right: 0,
     top: 0,
-    bottom: 200,
+    bottom: 0,
     position: 'absolute'
   },
   buttonText: {
@@ -147,6 +147,13 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     backgroundColor: '#2196F3',
+  },
+  homepageText: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'black',
+    flex: 1,
+
   }
   
   
