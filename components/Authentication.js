@@ -19,33 +19,41 @@ const {
 class Authentication extends Component {
   constructor() {
     super();
-    this.state = { username: '', password: '', loading: false, error: '' };
+    this.state = { 
+      loading: false,
+      username: '',
+      password: '',
+      name: '',
+      phone: '',
+      homecity: '',
+      sex: '',
+      longitude: '',
+      latitude: '',
+      uid: '',
+      error: '',
+     };
+     this.proRef = firebase.database().ref().child('profiles');
   }
   userAuth() {
     this.setState({ error: '', loading: true });
     const { username, password } = this.state;
     firebase.auth().signInWithEmailAndPassword(username, password)
     .then(() => {
+      var user = firebase.auth().currentUser;
+      this.listenForProfile(this.proRef.child(user.uid));
       this.setState({ error: '', loading: false });
-      firebase.auth().currentUser.getIdToken().then(function(idToken) {
-        AsyncStorage.setItem('id_token', idToken);
-        console.log(idToken);
-        Alert.alert( 'Velkommen');
-        Actions.HomePage();
-      })
-      .catch((err) => {
-        this.setState({ error: 'Failed to obtain user ID token.'+err, loading: false });
-      });
+    
     })
     .catch((err) => {
         //Login was not successful, let's create a new account
+        this.setState({ error: 'Failed to obtain user ID token.'+err, loading: false });
         firebase.auth().createUserWithEmailAndPassword(username, password)
         .then(() => { 
           this.setState({ error: '', loading: false });
           firebase.auth().currentUser.getIdToken().then(function(idToken) {
             AsyncStorage.setItem('id_token', idToken);
             console.log(idToken);
-            Alert.alert( 'Velkommen!');
+            Alert.alert( 'Welcome!');
             Actions.HomePage();
           })
           .catch(() => {
@@ -55,6 +63,34 @@ class Authentication extends Component {
         .catch((err) => {
             this.setState({ error: 'Authentication failed. '+err, loading: false });
         });
+    });
+  }
+  //Tager info fra profiles under det UID.
+  listenForProfile(proRef) {
+    proRef.on('value', (snap) => {
+      this.setState({
+        loading: false,
+        error: ''
+      });
+      var user = {
+        name: snap.val().name,
+        phone: snap.val().phone,
+        homecity: snap.val().homecity,
+        sex: snap.val().sex,
+        longitude: snap.val().longitude,
+        latitude: snap.val().latitude,
+        uid: snap.key,
+        token: ''
+      };
+      firebase.auth().currentUser.getIdToken().then(function(idToken) {
+        user.token = idToken;
+        AsyncStorage.setItem('user', JSON.stringify(user));
+        Alert.alert('Welcome');
+        Actions.HomePage();
+      })
+      .catch((err) => {
+        this.setState({ error: 'Failed to obtain user ID token. ' + err, loading: false });
+      });
     });
   }
   renderButtonOrSpinner() {

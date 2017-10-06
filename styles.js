@@ -142,9 +142,14 @@ var styles = StyleSheet.create({
     padding: 20,
     color: 'white'
   },
+  //Buttonstyles
   button: {
     justifyContent: 'flex-end',
     alignItems: 'center',
+    flex: 1,
+    backgroundColor: '#2196F3',
+  },
+  button2: {
     flex: 1,
     backgroundColor: '#2196F3',
   },

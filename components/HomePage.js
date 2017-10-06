@@ -37,12 +37,23 @@ class HomePage extends React.Component {
           console.log('AsyncStorage error: ' + error.message);
         }
       }
+
+      async updateInformation() {
+        try {
+          Alert.alert("Information updated! See people around you on the map.")
+          Actions.Maps();
+        } catch (error) {
+          console.log('Error: ' + error.message);
+        }
+      }
+
+      
       getRef() {
         return firebase.database().ref();
       }
       //Router flux fis. I toppen
       static navigationOptions = {
-        title: 'Connected',
+        title: 'Back',
       };
       
 
@@ -50,7 +61,7 @@ class HomePage extends React.Component {
         const { navigate } = this.props.navigation;
         return (
           <KeyboardAvoidingView style={styles.listContainer} >
-            <StatusBar onPress={this.userLogout.bind(this)} title="Home" />
+            <StatusBar onPress={this.userLogout.bind(this)} title="" />
             <Text style={styles.homepageText}>Name: <TextInput
           style={{height: 40, width: 300, alignItems: 'center'}}
           placeholder="Type in here!"
@@ -60,11 +71,20 @@ class HomePage extends React.Component {
             <Text style={styles.homepageText}>Home City: </Text>
             <Text style={styles.homepageText}>Sex: </Text>
 
+            <View style={styles.button}>
+            <Button style={styles.button}
+            onPress={this.updateInformation.bind(this)}
+            title="Update Information"
+            color="white"
+            
+            />
+            </View>
+        
             <View style={style=styles.button}>
               
             <Button
             onPress={ () => Actions.Maps()} 
-            title="Maps"
+            title="Map"
             color="white"
       />
             </View>
