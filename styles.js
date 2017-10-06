@@ -65,10 +65,6 @@ var styles = StyleSheet.create({
     paddingTop: 14,
     paddingBottom: 16,
   },
-  form: {
-    backgroundColor: '#edf2f9',
-    alignItems: 'center'
-  },
   title: {
     color: '#444',
     fontSize: 26,
@@ -158,8 +154,10 @@ var styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     flex: 1,
-
-  }
+  },
+  form: {
+    backgroundColor: '#f2f2f2'
+  },
   
   
 })
