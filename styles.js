@@ -26,6 +26,7 @@ var styles = StyleSheet.create({
     fontSize: 16,
   },
   navbar: {
+    
     alignItems: 'center',
     backgroundColor: '#fff',
     borderBottomColor: '#eee',
@@ -37,17 +38,12 @@ var styles = StyleSheet.create({
     width: '100%'
   },
   navbarTitle: {
+  
     flex: 2,
     color: '#444',
     fontSize: 16,
     fontWeight: '500',
     textAlign: 'center'
-  },
-  statusbar: {
-    backgroundColor: '#fff',
-    height: 22,
-    flex: 1,
-    justifyContent: 'flex-start'
   },
   center: {
     textAlign: 'center',
@@ -79,14 +75,13 @@ var styles = StyleSheet.create({
     paddingLeft: 5,
     paddingBottom: 2,
     color: '#262626',
-    width: '90%',
-    flex: 2,
+    width: '100%',
+    flex: 1,
     fontSize: 18,
     fontWeight: '200',
     height: 40
   },
   containerStyle: {
-    width: 200,
     height: 60,
     borderColor: '#D4D4D4',
     borderBottomWidth: 1,
@@ -124,13 +119,7 @@ var styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: '#007AFF'
   },
-  container: {
-    flex: 4,
-    justifyContent: 'space-between',
-    backgroundColor: '#f9f9f9',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
+
   map: {
     left: 0,
     right: 0,
@@ -144,16 +133,10 @@ var styles = StyleSheet.create({
   },
   //Buttonstyles
   button: {
-    justifyContent: 'flex-end',
-    alignItems: 'center',
     flex: 1,
     backgroundColor: '#2196F3',
-  },
-  button2: {
-    paddingVertical: 20,
-    justifyContent: 'flex-end',
-    flex: 1,
-    backgroundColor: 'yellow',
+    paddingTop: 50,
+    paddingBottom: 50,
   },
 
   form: {

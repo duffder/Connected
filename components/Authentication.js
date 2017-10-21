@@ -111,7 +111,7 @@ class Authentication extends Component {
 
   render() {
     return (
-      <KeyboardAvoidingView style={styles.container} behavior='padding'>
+      <KeyboardAvoidingView>
         <Text style={styles.title}>Be connected</Text>
 
         <View style={styles.form}>
@@ -152,7 +152,7 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
             value={value}
             onChangeText={onChangeText}
             style={styles.inputStyle}
-            editable={true}
+            editable
             returnKeyType='next'
           />
         </View>

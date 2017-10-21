@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import { ActivityIndicator, AsyncStorage, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, AsyncStorage, StyleSheet, Text, View, Alert } from 'react-native';
 import {Router, Scene} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import Authentication from './components/Authentication';
 import HomePage from './components/HomePage';
 import Maps from './components/Maps';
+import { Actions } from 'react-native-router-flux';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBuseOK4Mrcl3miu_efGzfYaw6yjURHjmo",
@@ -27,10 +28,28 @@ export default class App extends React.Component {
     this.state = { hasToken: false, isLoaded: false };
   }
   componentWillMount() {
+
+    /*
+    Following code will log you in automatically.
+    */
+    
     AsyncStorage.getItem('id_token').then((token) => {
       this.setState({hasToken: token !== null, isLoaded: true});
     })
   }
+
+
+  async userLogout() {
+    try {
+      await AsyncStorage.removeItem('id_token');
+      Alert.alert("Du er logget ud!")
+      Actions.Authentication();
+    } catch (error) {
+      console.log('AsyncStorage error: ' + error.message);
+    }
+  }
+
+
   render() {
     if (!this.state.isLoaded) {
       return (
@@ -38,28 +57,32 @@ export default class App extends React.Component {
       )
     } else {
       return (
-        <Router>
+        <Router sceneStyle={{paddingTop: 25}}>
           <Scene key='root'>
+            
             <Scene
+
             component={Authentication}
             hideNavBar={true}
             initial={!this.state.hasToken}
             key='Authentication'
             title='Authentication'
             />
-            <Scene
+            <Scene 
+            onRight={() => this.userLogout()}
+            rightTitle="LOG OUT"
             component={HomePage}
             hideNavBar={true}
             initial={this.state.hasToken}
             key='HomePage'
             title='Home Page'
+         
             />
             <Scene
             //Det er her det sner.
           
             component={Maps}
             hideNavBar={false}
-          
             key='Maps'
             title='Maps'
             />
