@@ -148,17 +148,6 @@ class HomePage extends React.Component {
             />
             </Card>
             </CardSection>
-            
-            <Card>
-            <Button
-            style={styles.button2}
-            title="Log out"
-            color="black"
-            onPress={this.userLogout.bind(this)}
-            />
-
-          </Card>
-       
 
       </KeyboardAvoidingView>
 
