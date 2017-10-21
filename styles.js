@@ -79,17 +79,21 @@ var styles = StyleSheet.create({
     paddingLeft: 5,
     paddingBottom: 2,
     color: '#262626',
+    width: '90%',
+    flex: 2,
     fontSize: 18,
     fontWeight: '200',
-    flex: 1,
     height: 40
   },
   containerStyle: {
+    width: 200,
     height: 60,
-    flexDirection: 'column',
-    width: '100%',
     borderColor: '#D4D4D4',
     borderBottomWidth: 1,
+  },
+
+  cardStyle: {
+    flex: 1
   },
   errorTextStyle: {
     color: '#E64A19',

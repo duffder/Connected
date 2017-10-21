@@ -3,6 +3,7 @@ import ReactNative from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import styles from '../styles';
+import { Card } from './common/';
 
 const {
   Alert,
@@ -63,6 +64,7 @@ class Authentication extends Component {
     }
     return <Button onPress={this.userAuth.bind(this)} title="Log in" />;
   }
+
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior='padding'>
@@ -92,22 +94,27 @@ class Authentication extends Component {
 }
 const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
     
-    const { inputStyle, labelStyle, containerStyle } = styles;
 
     return (
-        <View style={containerStyle}>
-            <Text style={labelStyle}>{label.toUpperCase()}</Text>
+
+      <Card>
+        <View style={styles.containerStyle}>
+            <Text style={{flex: 1}}>{label.toUpperCase()}</Text>
             <TextInput
             autoCorrect={false}
             placeholder={placeholder}
             secureTextEntry={secureTextEntry}
             value={value}
             onChangeText={onChangeText}
-            style={inputStyle}
+            style={styles.inputStyle}
             editable={true}
             returnKeyType='next'
           />
         </View>
+        </Card>
     );
 };
+
+
+
 module.exports = Authentication;
