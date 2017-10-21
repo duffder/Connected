@@ -3,7 +3,7 @@ import ReactNative from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import styles from '../styles';
-import { Card } from './common/';
+import { Card, CardSection } from './common/';
 
 const {
   Alert,
@@ -97,6 +97,7 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
 
     return (
 
+      <CardSection>
       <Card>
         <View style={styles.containerStyle}>
             <Text style={{flex: 1}}>{label.toUpperCase()}</Text>
@@ -112,6 +113,7 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
           />
         </View>
         </Card>
+        </CardSection>
     );
 };
 

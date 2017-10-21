@@ -6,7 +6,7 @@ import StatusBar from './StatusBar';
 import ActionButton from './ActionButton';
 import styles from '../styles';
 import StackNavigator from 'react-navigation';
-import { Card } from './common/';
+import { Card, CardSection } from './common/';
 
 
 const {
@@ -48,7 +48,7 @@ class HomePage extends React.Component {
 
   componentWillMount(){
     let user = firebase.auth().currentUser;
-    this.retrieveFromFirebase();
+    this.retrieveFromFirebase(user);
   //  this.writeToFirebase();
   }
 
@@ -70,8 +70,8 @@ class HomePage extends React.Component {
         title: 'Connected',
       };
       
-      retrieveFromFirebase = () => {
-        const { currentUser } = firebase.auth();
+      retrieveFromFirebase = (user) => {
+  
         firebase.database().ref(`/profiles/1EQvtY7ghaR8lq9HszB1XAP76Cc2/`)
         //anytime we get any data, call this function below with an object, to describe the data
         .on('value', snapshot => {
@@ -90,19 +90,33 @@ class HomePage extends React.Component {
       }
 
       writeToFirebase =() => {
+        const {currentUser} = firebase.auth();
        // const { longitude } = '30.30';
-        firebase.database().ref(`/profiles/`)
-        .push({ longitude: 30 });
+        firebase.database().ref(`/profiles/${currentUser.uid}/`)
+        .push({ 
+          homecity: 'nice nok',
+          latitude: 20,
+          longitude: 20,
+          name: 'lol',
+          phone: 232,
+          sex: 'male',
+          username: 'what'
+        
+        
+        });
+       
       };
 
 
       render() {
-        const { navigate } = this.props.navigation;
         return (
           <KeyboardAvoidingView style={styles.listContainer} >
             <StatusBar onPress={this.userLogout.bind(this)} title="Home" />
+
+
+            <CardSection>
           
-            
+            <Card>
             <Text style={styles.homepageText}>Name: {this.state.username} </Text>
 
            
@@ -111,7 +125,12 @@ class HomePage extends React.Component {
 
             <Text style={styles.homepageText}>Home City: {this.state.homecity}</Text>
             <Text style={styles.homepageText}>Sex: {this.state.sex} </Text>
+            </Card>
+          </CardSection>
 
+
+            <CardSection>
+           
             <Card>
 
           
@@ -134,7 +153,7 @@ class HomePage extends React.Component {
       />
       
             </Card>
-
+</CardSection>
 
   
 
