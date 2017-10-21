@@ -15,30 +15,30 @@ class Maps extends React.Component {
   
     this.state = {
       initialPosition: {
-        latitude: 55.676098,
-        longitude: 12.568337,
+        latitude: 55.676314,
+        longitude: 12.569990,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.033,
   
       },
       markerPosition: {
-        latitude: 55.665098,
-        longitude: 12.557337
+        latitude: 55.677859,
+        longitude: 12.573155
       },
 
       markerPosition2: {
-        latitude: 55.674098,
-        longitude: 12.566337
+        latitude: 55.675899,
+        longitude: 12.562877
       },
 
       markerPosition3: {
-        latitude: 55.666098,
-        longitude: 12.558337
+        latitude: 55.674302,
+        longitude: 12.570666
       },
 
       markerPosition4: {
-        latitude: 55.646098,
-        longitude: 12.538337
+        latitude: 55.675548,
+        longitude: 12.578284
       }
 
 
@@ -81,15 +81,23 @@ class Maps extends React.Component {
          
          
             <MapView.Marker
+            title={"Alex"}
+            description={"Phone: 12345678 "}
            coordinate={this.state.markerPosition} />
 
            <MapView.Marker
+           title={"John"}
+           description={"Phone: 12345678 "}
            coordinate={this.state.markerPosition2} />
 
            <MapView.Marker
+           title={"Per"}
+           description={"Phone: 12345678 "}
            coordinate={this.state.markerPosition3} />
 
            <MapView.Marker
+           title={"Supreme"}
+           description={"Phone: 12345678 "}
            coordinate={this.state.markerPosition4} />
 
               
