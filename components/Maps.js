@@ -7,16 +7,7 @@ import styles from '../styles';
 import StackNavigator from 'react-navigation';
 import { StyleSheet, Text, View, Dimensions, Alert, Button, TouchableHighlight } from 'react-native';
 import MapView from 'react-native-maps'
-import { Card } from './common/';
-
-const {width, height} = Dimensions.get('window')
-
-const SCREEN_HEIGHT = height
-const SCREEN_WIDTH = width
-const ASPECT_RATIO = width / height
-const LATTITUDE_DELTA = 0.0922
-const LONGTITUDE_DELTA = LATTITUDE_DELTA * ASPECT_RATIO
-
+import { Card, Header } from './common/';
 
 class Maps extends React.Component {
   constructor(props) {
@@ -26,23 +17,55 @@ class Maps extends React.Component {
       initialPosition: {
         latitude: 55.676098,
         longitude: 12.568337,
-        latitudeDelta: 2,
-        longitudeDelta: 2,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.033,
   
       },
       markerPosition: {
-        latitude: 55.676098,
-        longitude: 12.568337
+        latitude: 55.665098,
+        longitude: 12.557337
+      },
+
+      markerPosition2: {
+        latitude: 55.674098,
+        longitude: 12.566337
+      },
+
+      markerPosition3: {
+        latitude: 55.666098,
+        longitude: 12.558337
+      },
+
+      markerPosition4: {
+        latitude: 55.646098,
+        longitude: 12.538337
       }
+
+
     }
     
   }
+
+  ComponentDidMount(){
+
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        if (this.map) {
+          this.map.animateToRegion({
+            latitude: coords.latitude,
+            longitude: coords.longitude,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005
+          })
+        }
+      },
+      (error) => alert('Error: Are location services on?'),
+      { enableHighAccuracy: true }
+    )
+
+
+  }
   
-  watchID: ?number = null
-  
-  ComponentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchID)
-  }  
     render() {
       return (
         <View style={styles.container}>
@@ -50,13 +73,31 @@ class Maps extends React.Component {
           style={styles.map}
           region={this.state.initialPosition}>
           
-          <MapView.Marker
-          coordinate={this.state.markerPosition}>
-          <View style={styles.radius}>
+         
+
+          
+          
             <View style={styles.marker}>
+         
+         
+            <MapView.Marker
+           coordinate={this.state.markerPosition} />
+
+           <MapView.Marker
+           coordinate={this.state.markerPosition2} />
+
+           <MapView.Marker
+           coordinate={this.state.markerPosition3} />
+
+           <MapView.Marker
+           coordinate={this.state.markerPosition4} />
+
+              
               </View>
-              </View>
-              </MapView.Marker>
+
+
+      
+           
               </MapView>
 
 

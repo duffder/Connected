@@ -111,10 +111,10 @@ var styles = StyleSheet.create({
     justifyContent: 'center'
   },
   marker: {
-    height: 20,
-    width: 20,
+    height: 50,
+    width: 50,
     borderWidth: 3,
-    borderColor: 'white',
+    borderColor: 'red',
     borderRadius: 20 / 2,
     overflow: 'hidden',
     backgroundColor: '#007AFF'
@@ -138,6 +138,7 @@ var styles = StyleSheet.create({
     paddingTop: 50,
     paddingBottom: 50,
   },
+
 
   form: {
     backgroundColor: '#f2f2f2'
