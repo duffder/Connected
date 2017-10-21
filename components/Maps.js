@@ -24,56 +24,21 @@ class Maps extends React.Component {
   
     this.state = {
       initialPosition: {
-        latitude: 0,
-        longitude: 0,
-        latitudeDelta: 0,
-        longitudeDelta: 0,
+        latitude: 55.676098,
+        longitude: 12.568337,
+        latitudeDelta: 2,
+        longitudeDelta: 2,
   
       },
       markerPosition: {
-        latitude: 0,
-        longitude: 0
+        latitude: 55.676098,
+        longitude: 12.568337
       }
     }
     
   }
   
   watchID: ?number = null
-  
-  componentDidMount() {
-  navigator.geolocation.getCurrentPosition((position) => {
-    var lat = parseFloat(position.coords.latitude)
-    var long = parseFloat(position.coords.longitude)
-  
-    var initialRegion = {
-      latitude: lat,
-      longitude: long,
-      latitudeDelta: LATTITUDE_DELTA,
-      longitudeDelta: LONGTITUDE_DELTA
-    }
-  
-    this.setState({initialPosition: initialRegion})
-    this.setState({markerPosition: initialRegion})
-  
-  },
-  (error) => alert(JSON.stringify(error)),
-  {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000})
-  
-  this.watchID = navigator.geolocation.watchPosition((position) => {
-    var lat = parseFloat(position.coords.latitude)
-    var long = parseFloat(position.coords.longitude)
-  
-    var lastRegion = {
-      latitude: lat,
-      longitude: long,
-      longitudeDelta: LONGTITUDE_DELTA,
-      latitudeDelta: LATTITUDE_DELTA
-    }
-  
-    this.setState({initialPosition: lastRegion})
-    this.setState({markerPosition: lastRegion})
-  })
-  }
   
   ComponentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchID)
