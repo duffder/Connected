@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import ReactNative from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import * as firebase from 'firebase';
-import StatusBar from './StatusBar';
 import ActionButton from './ActionButton';
 import styles from '../styles';
 import StackNavigator from 'react-navigation';
