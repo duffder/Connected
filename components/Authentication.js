@@ -22,6 +22,48 @@ class Authentication extends Component {
     super();
     this.state = { username: '', password: '', loading: false, error: '' };
   }
+
+  fetchUserData = () => {
+
+    const {currentUser} = firebase.auth();
+    
+          firebase.database().ref(`/profiles/${currentUser.uid}/`)
+          //anytime we get any data, call this function below with an object, to describe the data
+          .on('value', snapshot => {
+            this.setState({ 
+              
+              longitude: snapshot.val().longitude,
+              homecity: snapshot.val().homecity,
+              sex: snapshot.val().sex,
+              username: snapshot.val().username
+            
+            });
+            console.log('now logging retrievefromFirebase');
+            console.log(this.state.longitude);
+  
+          });
+          this.registerUserToFirebase();
+        }
+
+  registerUserToFirebase =(homecity, latitude, longitude, name, phone, sex, username ) => {
+    const {currentUser} = firebase.auth();
+   // const { longitude } = '30.30';
+    firebase.database().ref(`/profiles/${currentUser.uid}/`)
+    .push({ 
+      homecity,
+      latitude,
+      longitude,
+      name,
+      phone,
+      sex,
+      username
+    
+    
+    });
+   
+  };
+
+
   userAuth() {
     this.setState({ error: '', loading: true });
     const { username, password } = this.state;
@@ -64,6 +106,8 @@ class Authentication extends Component {
     }
     return <Button onPress={this.userAuth.bind(this)} title="Log in" />;
   }
+
+  
 
   render() {
     return (
