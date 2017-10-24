@@ -21,8 +21,6 @@ const {
   Button,
 } = ReactNative;
 
-
-
 class HomePage extends React.Component {
 
 
@@ -146,12 +144,23 @@ class HomePage extends React.Component {
  
             />
             </Card>
+
+            <Card>
+            <Button
+              style={styles.button}
+              onPress={() => Actions.DeckSwiper()}
+              title="Test swiper"
+ 
+            />
+            </Card>
+
+
             </CardSection>
 
       </KeyboardAvoidingView>
 
 
-    )
+    );
   }
 
 }

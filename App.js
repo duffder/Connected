@@ -4,6 +4,7 @@ import {Router, Scene} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import Authentication from './components/Authentication';
 import HomePage from './components/HomePage';
+import DeckSwiper from './components/DeckSwiper';
 import Maps from './components/Maps';
 import { Actions } from 'react-native-router-flux';
 
@@ -78,6 +79,16 @@ export default class App extends React.Component {
             title='Home Page'
          
             />
+            <Scene 
+            onRight={() => this.userLogout()}
+            rightTitle="LOG OUT"
+            component={DeckSwiper}
+            key='DeckSwiper'
+            title='Deck Swiper'
+         
+            />
+
+
             <Scene
             //Det er her det sner.
           
