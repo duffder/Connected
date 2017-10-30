@@ -131,6 +131,8 @@ class Authentication extends Component {
           />
           <Text style={styles.errorTextStyle}>{this.state.error}</Text>
           {this.renderButtonOrSpinner()}
+          <Button onPress={() => Actions.Registration()} title="Register" />
+          
         </View>
       </KeyboardAvoidingView>
     );

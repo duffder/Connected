@@ -6,6 +6,7 @@ import Authentication from './components/Authentication';
 import HomePage from './components/HomePage';
 import DeckSwiper from './components/DeckSwiper';
 import Maps from './components/Maps';
+import Registration from './components/Registration';
 import { Actions } from 'react-native-router-flux';
 
 const firebaseConfig = {
@@ -97,6 +98,20 @@ export default class App extends React.Component {
             key='Maps'
             title='Maps'
             />
+
+
+
+            <Scene
+            //Det er her det sner.
+          
+            component={Registration}
+            hideNavBar={false}
+            key='Registration'
+            title='Registration'
+            />
+
+
+
             </Scene>
             </Router>
       );
