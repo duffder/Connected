@@ -4,7 +4,7 @@ import {Actions} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import styles from '../styles';
 import { Card, CardSection } from './common/';
-import WallpaperImg from './WallpaperImg';
+import LogoImg from './LogoImg';
 
 const {
   Alert,
@@ -113,18 +113,21 @@ class Authentication extends Component {
     
   }
 
-  
-
+  //
   render() {
     return (
+
       <KeyboardAvoidingView style={styles.loginStyle}>
-      
+    
+     <View style={{paddingBottom:150}}>
+      <LogoImg/>
+      </View>
 
-        <Text style={styles.title}>Be connected</Text>
+      <View>
   
-
         <Card>
           <TitledInput
+            style={{position: "absolute"}}
             label=''
             onChangeText={(username) => this.setState({username})}
             placeholder='Username'
@@ -150,7 +153,7 @@ class Authentication extends Component {
           onPress={() => Actions.Registration()}
            title="Register" />
           
-      
+      </View>
       </KeyboardAvoidingView>
     );
   }

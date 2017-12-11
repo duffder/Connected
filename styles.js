@@ -73,6 +73,10 @@ var styles = StyleSheet.create({
     padding: 50
   },
 
+  title2: {
+
+    paddingBottom: 50
+  },
 
   inputStyle: {
     paddingRight: 5,
@@ -89,7 +93,7 @@ var styles = StyleSheet.create({
   },
   containerStyle: {
     height: 50,
-
+    justifyContent: 'center',
     borderColor: '#D4D4D4',
   },
 
