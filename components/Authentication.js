@@ -4,6 +4,7 @@ import {Actions} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import styles from '../styles';
 import { Card, CardSection } from './common/';
+import WallpaperImg from './WallpaperImg';
 
 const {
   Alert,
@@ -164,7 +165,7 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
          
 
             <TextInput
-            borderColor= 'purple'
+          
             autoCorrect={false}
             placeholder={placeholder}
             secureTextEntry={secureTextEntry}

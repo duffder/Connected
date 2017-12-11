@@ -10,7 +10,7 @@ const remote = 'https://s15.postimg.org/tw2qkvmcb/400px.png';
 export default class BackgroundImage extends Component {
   render() {
     const resizeMode = 'center';
-    const text = 'This is some text inlaid in an <Image />';
+    const text = '';
 
     return (
       <Image
@@ -23,7 +23,7 @@ export default class BackgroundImage extends Component {
           height: '100%',
           justifyContent: 'center',
         }}
-        source={{ uri: remote }}
+        source={require('./pictures/sun2.png')}
       >
         <Text
           style={{
@@ -40,4 +40,5 @@ export default class BackgroundImage extends Component {
   }
 }
 
+module.exports = BackgroundImage;
 AppRegistry.registerComponent('BackgroundImage', () => BackgroundImage);

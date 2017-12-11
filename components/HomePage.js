@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import ActionButton from './ActionButton';
 import styles from '../styles';
+import WallpaperImg from './WallpaperImg';
 //import StackNavigator from 'react-navigation';
 import { Card, CardSection } from './common/';
 
@@ -111,7 +112,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.loginStyle} >
-       
+       <WallpaperImg/>
 
           <Card>
             <Text style={styles.homepageText}>Name: {this.state.username} </Text>
