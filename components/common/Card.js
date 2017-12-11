@@ -27,9 +27,9 @@ const styles = {
 
         position: 'relative', 
 
-        marginLeft: 5, //margin spacing
-        marginRight: 5,
-        marginTop: 10
+        marginLeft: 30, //margin spacing
+        marginRight: 30,
+        marginTop: 30
 
 
     }

@@ -74,7 +74,7 @@ export default class App extends React.Component {
             onRight={() => this.userLogout()}
             rightTitle="LOG OUT"
             component={HomePage}
-            hideNavBar={true}
+            hideNavBar={false}
             initial={this.state.hasToken}
             key='HomePage'
             title='Home Page'

@@ -111,29 +111,37 @@ class Authentication extends Component {
 
   render() {
     return (
-      <KeyboardAvoidingView>
+      <KeyboardAvoidingView style={styles.loginStyle}>
+      
         <Text style={styles.title}>Be connected</Text>
 
-        <View style={styles.form}>
+  
+
+        <Card>
           <TitledInput
-            label='Email Address'
+            label=''
             onChangeText={(username) => this.setState({username})}
             placeholder='Username'
             value={this.state.username}
           />
+        </Card>
 
+  <Card>
           <TitledInput
-            label='Password'
+            label=''
             onChangeText={(password) => this.setState({password})}
             placeholder='Password'
             secureTextEntry
             value={this.state.password}
           />
+
+       </Card>
+
           <Text style={styles.errorTextStyle}>{this.state.error}</Text>
           {this.renderButtonOrSpinner()}
           <Button onPress={() => Actions.Registration()} title="Register" />
           
-        </View>
+      
       </KeyboardAvoidingView>
     );
   }
@@ -143,10 +151,10 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
 
     return (
 
-      <CardSection>
-      <Card>
+
         <View style={styles.containerStyle}>
-            <Text style={{flex: 1}}>{label.toUpperCase()}</Text>
+         
+
             <TextInput
             autoCorrect={false}
             placeholder={placeholder}
@@ -157,9 +165,9 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
             editable
             returnKeyType='next'
           />
+          
         </View>
-        </Card>
-        </CardSection>
+   
     );
 };
 

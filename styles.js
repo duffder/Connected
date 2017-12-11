@@ -68,7 +68,7 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20
+    padding: 50
   },
   inputStyle: {
     paddingRight: 5,
@@ -82,9 +82,9 @@ var styles = StyleSheet.create({
     height: 40
   },
   containerStyle: {
-    height: 60,
+    height: 50,
+
     borderColor: '#D4D4D4',
-    borderBottomWidth: 1,
   },
 
   cardStyle: {
@@ -141,7 +141,7 @@ var styles = StyleSheet.create({
 
 
   form: {
-    backgroundColor: '#f2f2f2'
+
   },
 
   homepageText: {
@@ -149,6 +149,16 @@ var styles = StyleSheet.create({
     fontSize: 20,
     paddingLeft: 15,
     paddingRight: 15
+  },
+
+  loginStyle:{
+    backgroundColor: '#3498db',
+    flex: 1
+  },
+
+  logo:{
+    height: 10,
+    width: 10
   }
   
   
