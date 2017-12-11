@@ -37,8 +37,8 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%'
   },
+
   navbarTitle: {
-  
     flex: 2,
     color: '#444',
     fontSize: 16,
@@ -61,6 +61,8 @@ var styles = StyleSheet.create({
     paddingTop: 14,
     paddingBottom: 16,
   },
+
+  
   title: {
     color: '#444',
     fontSize: 26,
@@ -70,16 +72,20 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 50
   },
+
+
   inputStyle: {
     paddingRight: 5,
     paddingLeft: 5,
     paddingBottom: 2,
-    color: '#262626',
+    color: 'white',
     width: '100%',
     flex: 1,
     fontSize: 18,
     fontWeight: '200',
-    height: 40
+    height: 40,
+    borderColor: 'white',
+    borderWidth: .5
   },
   containerStyle: {
     height: 50,
@@ -134,9 +140,10 @@ var styles = StyleSheet.create({
   //Buttonstyles
   button: {
     flex: 1,
-    backgroundColor: '#2196F3',
+    backgroundColor: 'black',
     paddingTop: 50,
     paddingBottom: 50,
+    color: "white"
   },
 
 
@@ -145,7 +152,7 @@ var styles = StyleSheet.create({
   },
 
   homepageText: {
-
+    color: "white",
     fontSize: 20,
     paddingLeft: 15,
     paddingRight: 15

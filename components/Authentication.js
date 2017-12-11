@@ -104,7 +104,12 @@ class Authentication extends Component {
     if (this.state.loading) {
         return <ActivityIndicator size='small' />;    
     }
-    return <Button onPress={this.userAuth.bind(this)} title="Log in" />;
+    return <Button 
+    onPress={this.userAuth.bind(this)} 
+    title="Log in" 
+    color="white"
+    />;
+    
   }
 
   
@@ -113,8 +118,8 @@ class Authentication extends Component {
     return (
       <KeyboardAvoidingView style={styles.loginStyle}>
       
-        <Text style={styles.title}>Be connected</Text>
 
+        <Text style={styles.title}>Be connected</Text>
   
 
         <Card>
@@ -139,7 +144,10 @@ class Authentication extends Component {
 
           <Text style={styles.errorTextStyle}>{this.state.error}</Text>
           {this.renderButtonOrSpinner()}
-          <Button onPress={() => Actions.Registration()} title="Register" />
+          <Button 
+          color="white"
+          onPress={() => Actions.Registration()}
+           title="Register" />
           
       
       </KeyboardAvoidingView>
@@ -156,6 +164,7 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
          
 
             <TextInput
+            borderColor= 'purple'
             autoCorrect={false}
             placeholder={placeholder}
             secureTextEntry={secureTextEntry}

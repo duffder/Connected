@@ -29,7 +29,7 @@ const styles = {
           marginRight: 5,
           backgroundColor: '#fff',
           paddingTop: 10,
-          paddingBottom: 10
+          paddingBottom: 10,
   
       },
 

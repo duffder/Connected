@@ -59,7 +59,7 @@ export default class App extends React.Component {
       )
     } else {
       return (
-        <Router sceneStyle={{paddingTop: 25}}>
+        <Router sceneStyle={{paddingTop: 0}}>
           <Scene key='root'>
             
             <Scene
@@ -91,8 +91,6 @@ export default class App extends React.Component {
 
 
             <Scene
-            //Det er her det sner.
-          
             component={Maps}
             hideNavBar={false}
             key='Maps'

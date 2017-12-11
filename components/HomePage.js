@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import ActionButton from './ActionButton';
 import styles from '../styles';
-import StackNavigator from 'react-navigation';
+//import StackNavigator from 'react-navigation';
 import { Card, CardSection } from './common/';
 
 
@@ -64,10 +64,11 @@ class HomePage extends React.Component {
   getRef() {
     return firebase.database().ref();
   }
+  
   //Router flux fis. I toppen
-  static navigationOptions = {
-    title: 'Connected',
-  };
+ //static navigationOptions = {
+ //   title: 'Connected',
+ // };
 
   retrieveFromFirebase = (user) => {
 
@@ -109,8 +110,8 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <KeyboardAvoidingView style={styles.listContainer} >
-        <CardSection>
+      <KeyboardAvoidingView style={styles.loginStyle} >
+       
 
           <Card>
             <Text style={styles.homepageText}>Name: {this.state.username} </Text>
@@ -122,14 +123,11 @@ class HomePage extends React.Component {
             <Text style={styles.homepageText}>Home City: {this.state.homecity}</Text>
             <Text style={styles.homepageText}>Sex: {this.state.sex} </Text>
           </Card>
-        </CardSection>
-
-        <CardSection>
 
     
           <Card>
             <Button
-              style={styles.button}
+            color="white"
               onPress={() => Actions.Maps()}
               title="Maps"
 
@@ -138,7 +136,7 @@ class HomePage extends React.Component {
 
             <Card>
             <Button
-              style={styles.button}
+            color="white"
               onPress={() => this.writeToFirebase()}
               title="Press me to push longitude to firebase"
  
@@ -147,7 +145,7 @@ class HomePage extends React.Component {
 
             <Card>
             <Button
-              style={styles.button}
+       color="white"
               onPress={() => Actions.DeckSwiper()}
               title="Test swiper"
  
@@ -155,7 +153,6 @@ class HomePage extends React.Component {
             </Card>
 
 
-            </CardSection>
 
       </KeyboardAvoidingView>
 
