@@ -72,8 +72,8 @@ class HomePage extends React.Component {
  // };
 
   retrieveFromFirebase = (user) => {
-
-    firebase.database().ref(`/profiles/1EQvtY7ghaR8lq9HszB1XAP76Cc2/`)
+    const { currentUser } = firebase.auth();
+    firebase.database().ref(`/profiles/${currentUser.uid}/`)
       //anytime we get any data, call this function below with an object, to describe the data
       .on('value', snapshot => {
         this.setState({

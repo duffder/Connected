@@ -24,6 +24,18 @@ class Authentication extends Component {
     this.state = { username: '', password: '', loading: false, error: '' };
   }
 
+  async userLogout() {
+    try {
+      await AsyncStorage.removeItem('id_token');
+      Alert.alert("Du er logget ud!")
+      Actions.Authentication();
+    } catch (error) {
+      console.log('AsyncStorage error: ' + error.message);
+    }
+  }
+
+
+
   fetchUserData = () => {
 
     const {currentUser} = firebase.auth();
@@ -64,6 +76,7 @@ class Authentication extends Component {
    
   };
 
+  /*
 
   userAuth() {
     this.setState({ error: '', loading: true });
@@ -101,6 +114,32 @@ class Authentication extends Component {
         });
     });
   }
+  */
+  userAuth() {
+    this.setState({ error: '', loading: true });
+    const { username, password } = this.state;
+    firebase.auth().signInWithEmailAndPassword(username, password)
+    .then(() => {
+      this.setState({ error: '', loading: false });
+      firebase.auth().currentUser.getIdToken().then(function(idToken) {
+        AsyncStorage.setItem('id_token', idToken);
+        console.log(idToken);
+        Alert.alert( 'Velkommen');
+        Actions.HomePage();
+      })
+      .catch((err) => {
+        this.setState({ error: 'Failed to obtain user ID token.'+err, loading: false });
+      });
+    })
+
+          .catch(() => {
+            this.setState({ error: 'Failed to obtain user ID token.', loading: false });
+          });
+  }
+
+
+
+
   renderButtonOrSpinner() {
     if (this.state.loading) {
         return <ActivityIndicator size='small' />;    
@@ -110,6 +149,7 @@ class Authentication extends Component {
     title="Log in" 
     color="white"
     />;
+
     
   }
 
@@ -177,6 +217,7 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
             style={styles.inputStyle}
             editable
             returnKeyType='next'
+            placeholderTextColor="white"
           />
           
         </View>
