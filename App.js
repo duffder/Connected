@@ -29,12 +29,14 @@ console.ignoredYellowBox = [
   "Setting a timer"
 ];
 
-const MenuIcon = () => {
+const MenuIcon = ({focused}) => {
   return (
     <Icon 
     name='menu'
     type='material-community'
-    color='#333333' />
+    color={focused ? '#333333' : '#c0c0c0'}
+    
+    />
   );
 }
 
@@ -87,7 +89,10 @@ export default class App extends React.Component {
     } else {
       return (
         <Router>
-          <Scene key='root'>
+          <Scene 
+          navigationBarStyle={{backgroundColor: 'grey'}}
+          navigationBarTitleImageStyle={{color: 'grey'}}
+          key='root'>
             
             <Scene
 
@@ -111,6 +116,7 @@ export default class App extends React.Component {
           <Drawer
           hideNavBar 
           key="drawer"
+          activeTintColor='grey'
           contentComponent={DrawerComponent}
             >
 
@@ -121,7 +127,7 @@ export default class App extends React.Component {
                 showLabel={false}
                 tabs={true}
                 tabBarPosition='bottom'
-                tabBarStyle={{ backgroundColor: '#FFFFFF' }}
+                tabBarStyle={{ backgroundColor: 'grey', color:'grey'  }}
                 >
 
      

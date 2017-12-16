@@ -170,7 +170,21 @@ var styles = StyleSheet.create({
   logo:{
     height: 10,
     width: 10
+  },
+
+
+  drawer: {
+    justifyContent: 'center',
+    backgroundColor: 'grey',
+    height: '100%',
+    flex: 1
+  },
+
+  drawerButton: {
+    color: 'white',
+    margin: 10
   }
+
   
   
 })

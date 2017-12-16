@@ -4,6 +4,8 @@ import ReactNative from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import ActionButton from './ActionButton';
 import styles from '../styles';
+import { Card, CardSection } from './common/';
+
 const {
   Alert,
   AsyncStorage,
@@ -41,9 +43,18 @@ class DrawerComponent extends Component{
   render() {
     return (
       <View style={styles.drawer}>
-        <Text>Drawer</Text>
-        <Button style={styles.drawerButton} onPress={this.userLogout.bind(this)} title="Log Out" />
-        <Button style={styles.drawerButton} onPress={Actions.pop} title="Back" />
+      <Card>
+        <Button 
+        color='white'
+        style={styles.drawerButton} onPress={this.userLogout.bind(this)} title="Log Out" />
+        </Card>
+        
+        <Card>
+          
+        <Button
+        color='white'
+        style={styles.drawerButton} onPress={Actions.pop} title="Back" />
+        </Card>
       </View>
     );
   }
