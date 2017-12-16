@@ -44,7 +44,7 @@ class HomePage extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let user = firebase.auth().currentUser;
     this.retrieveFromFirebase(user);
     //  this.writeToFirebase();
@@ -121,16 +121,6 @@ class HomePage extends React.Component {
             <Text style={styles.homepageText}>Sex: {this.state.sex} </Text>
           </Card>
 
-    
-          <Card>
-            <Button
-            color="white"
-              onPress={() => Actions.Maps()}
-              title="Maps"
-
-            />
-            </Card>
-
             <Card>
             <Button
             color="white"
@@ -139,16 +129,6 @@ class HomePage extends React.Component {
  
             />
             </Card>
-
-            <Card>
-            <Button
-       color="white"
-              onPress={() => Actions.DeckSwiper()}
-              title="Test swiper"
- 
-            />
-            </Card>
-
 
 
       </KeyboardAvoidingView>

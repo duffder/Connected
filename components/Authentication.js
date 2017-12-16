@@ -124,7 +124,6 @@ class Authentication extends Component {
       firebase.auth().currentUser.getIdToken().then(function(idToken) {
         AsyncStorage.setItem('id_token', idToken);
         console.log(idToken);
-        Alert.alert( 'Velkommen');
         Actions.HomePage();
       })
       .catch((err) => {
@@ -159,7 +158,12 @@ class Authentication extends Component {
 
       <KeyboardAvoidingView style={styles.loginStyle}>
     
-     <View style={{paddingBottom:150}}>
+     <View style={{
+       paddingTop: 60,
+       justifyContent: 'center',
+       alignItems: 'center',
+       
+       }}>
       <LogoImg/>
       </View>
 

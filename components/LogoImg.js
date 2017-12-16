@@ -7,20 +7,19 @@ export default class LogoImg extends Component {
     return (
       <Image
         style={{
-          paddingLeft:300,
-          paddingTop: 50,
-            width: "100%",
-          height: 170,
-          flex: 1,
+      
+         width: 125,
+          height: 125,
+       
 
 
-            position: "absolute",
+           
           justifyContent: 'center',
           alignItems: 'center'
           
         
         }}
-        source={require('./pictures/hulk.png')}
+        source={require('./pictures/friends2.png')}
       >
      
       </Image>

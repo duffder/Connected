@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { ActivityIndicator, AsyncStorage, StyleSheet, Text, View, Alert } from 'react-native';
 import {Router, Scene, Drawer, Tabs} from 'react-native-router-flux';
 import * as firebase from 'firebase';
+import { Icon } from 'react-native-elements';
 import Authentication from './components/Authentication';
 import HomePage from './components/HomePage';
 import DeckSwiper from './components/DeckSwiper';
@@ -97,40 +98,7 @@ export default class App extends React.Component {
             title='Authentication'
             />
 
-
-   
-
-
-            <Scene 
-            onRight={() => this.userLogout()}
-            rightTitle="LOG OUT"
-            component={HomePage}
-            hideNavBar={false}
-            initial={this.state.hasToken}
-            key='HomePage'
-            title='Home Page'
-         
-            />
-            <Scene 
-            onRight={() => this.userLogout()}
-            rightTitle="LOG OUT"
-            component={DeckSwiper}
-            key='DeckSwiper'
-            title='Deck Swiper'
-         
-            />
-
-
-            <Scene
-            component={Maps}
-            hideNavBar={false}
-            key='Maps'
-            title='Maps'
-            />
-
-
-
-            <Scene
+<Scene
             //Det er her det sner.
           
             component={Registration}
@@ -139,6 +107,81 @@ export default class App extends React.Component {
             title='Registration'
             />
 
+
+          <Drawer
+          hideNavBar 
+          key="drawer"
+          contentComponent={DrawerComponent}
+            >
+
+
+              <Tabs
+                key='Tabbar'
+                swipeEnabled
+                showLabel={false}
+                tabs={true}
+                tabBarPosition='bottom'
+                tabBarStyle={{ backgroundColor: '#FFFFFF' }}
+                >
+
+     
+            <Scene  
+           key="HomeTab"
+           title="format-list-bulleted"
+           icon={TabIcon}>
+
+
+            <Scene 
+            component={HomePage}
+            initial={this.state.hasToken}
+            key='HomePage'
+            title='Home Page'
+          />
+
+            </Scene>
+
+
+
+
+            <Scene 
+             key='DeckSwiper'
+              title='map'
+              icon={TabIcon}
+              >
+        
+         
+         
+            <Scene
+          component={DeckSwiper}
+            key='Deck'
+            title='Deck'
+            />
+
+            </Scene>
+
+
+          <Scene
+            key='MapsTab'
+          title='google-maps'
+          icon={TabIcon}
+          >
+
+  
+            <Scene
+            component={Maps}
+            hideNavBar={false}
+            key='Maps'
+            title='Maps'
+            />
+
+            </Scene>
+
+
+
+      
+
+          </Tabs>
+          </Drawer>
             </Scene>
             </Router>
       );

@@ -14,14 +14,19 @@ const {
 } = ReactNative;
 
 class DrawerComponent extends Component{
+  
   static propTypes = {
     name: PropTypes.string,
     sceneStyle: ViewPropTypes.style,
     title: PropTypes.string,
   }
+
+
   static contextTypes = {
     drawer: React.PropTypes.object,
   }
+
+
   async userLogout() {
     try {
       await AsyncStorage.removeItem('id_token');
@@ -31,6 +36,8 @@ class DrawerComponent extends Component{
       console.log('AsyncStorage error: ' + error.message);
     }
   }
+
+  
   render() {
     return (
       <View style={styles.drawer}>
