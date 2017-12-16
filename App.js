@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import { ActivityIndicator, AsyncStorage, StyleSheet, Text, View, Alert } from 'react-native';
-import {Router, Scene} from 'react-native-router-flux';
+import {Router, Scene, Drawer, Tabs} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import Authentication from './components/Authentication';
 import HomePage from './components/HomePage';
 import DeckSwiper from './components/DeckSwiper';
+import DrawerComponent from './components/DrawerComponent';
 import Maps from './components/Maps';
 import Registration from './components/Registration';
 import { Actions } from 'react-native-router-flux';
@@ -18,29 +19,51 @@ const firebaseConfig = {
   messagingSenderId: "181363238144"
 };
 
+/*
+Following are constant variables. One initializing firebase
+and two others initializing a menu and tab icon.
+*/
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 console.ignoredYellowBox = [
   "Setting a timer"
 ];
 
+const MenuIcon = () => {
+  return (
+    <Icon 
+    name='menu'
+    type='material-community'
+    color='#333333' />
+  );
+}
+
+const TabIcon = ({ focused, title }) => {
+  return (
+    <Icon 
+      name={title}
+      type='material-community'
+      color={focused ? '#333333' : '#c0c0c0'} />
+  );
+}
 
 export default class App extends React.Component {
   constructor() {
     super();
+
+    //If we load the app and there is no usertoken then it means
+    //user is not logged in and isLoaded = false.
     this.state = { hasToken: false, isLoaded: false };
   }
+
+  
   componentWillMount() {
 
-    /*
-    Following code will log you in automatically.
-    */
-    
+  
     AsyncStorage.getItem('id_token').then((token) => {
       this.setState({hasToken: token !== null, isLoaded: true});
     })
   }
-
-
+  
   async userLogout() {
     try {
       await AsyncStorage.removeItem('id_token');
@@ -52,6 +75,9 @@ export default class App extends React.Component {
   }
 
 
+
+
+
   render() {
     if (!this.state.isLoaded) {
       return (
@@ -59,7 +85,7 @@ export default class App extends React.Component {
       )
     } else {
       return (
-        <Router sceneStyle={{paddingTop: 0}}>
+        <Router>
           <Scene key='root'>
             
             <Scene
@@ -70,6 +96,11 @@ export default class App extends React.Component {
             key='Authentication'
             title='Authentication'
             />
+
+
+   
+
+
             <Scene 
             onRight={() => this.userLogout()}
             rightTitle="LOG OUT"
@@ -107,8 +138,6 @@ export default class App extends React.Component {
             key='Registration'
             title='Registration'
             />
-
-
 
             </Scene>
             </Router>

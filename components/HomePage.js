@@ -51,6 +51,7 @@ class HomePage extends React.Component {
   }
 
 
+
   async userLogout() {
     try {
       await AsyncStorage.removeItem('id_token');
@@ -78,14 +79,14 @@ class HomePage extends React.Component {
       .on('value', snapshot => {
         this.setState({
 
-          longitude: snapshot.val().longitude,
           homecity: snapshot.val().homecity,
           sex: snapshot.val().sex,
-          username: snapshot.val().username
+          name: snapshot.val().name,
+          phone: snapshot.val().phone
 
         });
         console.log('now logging retrievefromFirebase');
-        console.log(this.state.longitude);
+        console.log(this.state.homecity);
 
       });
   }
@@ -115,13 +116,8 @@ class HomePage extends React.Component {
        <WallpaperImg/>
 
           <Card>
-            <Text style={styles.homepageText}>Name: {this.state.username} </Text>
-
-
-            <Text style={styles.homepageText}>Longitude: {this.state.longitude} </Text>
-
-
-            <Text style={styles.homepageText}>Home City: {this.state.homecity}</Text>
+            <Text style={styles.homepageText}>Name: {this.state.name} </Text>
+            <Text style={styles.homepageText}>Phone: {this.state.phone} </Text>
             <Text style={styles.homepageText}>Sex: {this.state.sex} </Text>
           </Card>
 
