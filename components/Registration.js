@@ -35,6 +35,7 @@ class Registration extends React.Component {
 
       writeToFirebase = () => {
         const { currentUser } = firebase.auth();
+        
         // const { longitude } = '30.30';
         firebase.database().ref(`/profiles/${currentUser.uid}/`)
           .push({
@@ -44,11 +45,13 @@ class Registration extends React.Component {
             name: this.state.name,
             phone: this.state,phone,
             sex: this.state.sex,
-            phone: this.state.phone
     
           });
     
       };
+
+      
+
 
       /*
   userAuth() {
@@ -198,6 +201,8 @@ class Registration extends React.Component {
             onChangeText={(name) => this.setState({name})}
             placeholder='Name'
             value={this.state.name}
+            keyboardType='next'
+            maxLength = {40}
 
      />
 
@@ -209,6 +214,8 @@ class Registration extends React.Component {
             onChangeText={(email) => this.setState({email})}
             placeholder='E-mail'
             value={this.state.email}
+            keyboardType='next'
+            maxLength = {40}
 
      />
 
@@ -220,6 +227,8 @@ class Registration extends React.Component {
             onChangeText={(password) => this.setState({password})}
             placeholder='Password'
             value={this.state.password}
+            keyboardType='next'
+            maxLength = {20}
 
      />
 
@@ -232,6 +241,8 @@ class Registration extends React.Component {
             onChangeText={(phone) => this.setState({phone})}
             placeholder='Phone number'
             value={this.state.phone}
+            keyboardType='next'
+            maxLength = {8}
 
      />
 
@@ -244,6 +255,8 @@ class Registration extends React.Component {
             onChangeText={(sex) => this.setState({sex})}
             placeholder='Sex'
             value={this.state.sex}
+            type='next'
+            maxLength = {6}
 
      />
 
@@ -263,7 +276,7 @@ class Registration extends React.Component {
     }
 }
 
-const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
+const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry, keyboardType, maxLength }) => {
     
 
     return (
@@ -281,8 +294,10 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
             onChangeText={onChangeText}
             style={styles.inputStyle}
             editable
-            returnKeyType='next'
             placeholderTextColor="white"
+            keyboardType = {keyboardType}
+            maxLength ={maxLength}
+
           />
           
         </View>

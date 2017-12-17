@@ -107,13 +107,7 @@ class Maps extends React.Component {
       
            
               </MapView>
-
-
-              <Card>
-
-      
-            </Card>
-            
+              
         </View>
 
 

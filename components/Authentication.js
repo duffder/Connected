@@ -63,13 +63,13 @@ class Authentication extends Component {
    // const { longitude } = '30.30';
     firebase.database().ref(`/profiles/${currentUser.uid}/`)
     .push({ 
-      homecity,
-      latitude,
-      longitude,
+  //    homecity,
+//      latitude,
+  //    longitude,
       name,
       phone,
       sex,
-      username
+    //  username
     
     
     });

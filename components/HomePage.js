@@ -44,7 +44,7 @@ class HomePage extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     let user = firebase.auth().currentUser;
     this.retrieveFromFirebase(user);
     //  this.writeToFirebase();
@@ -79,16 +79,19 @@ class HomePage extends React.Component {
       .on('value', snapshot => {
         this.setState({
 
-          homecity: snapshot.val().homecity,
+         // homecity: snapshot.val().homecity,
           sex: snapshot.val().sex,
           name: snapshot.val().name,
           phone: snapshot.val().phone
 
         });
+
         console.log('now logging retrievefromFirebase');
-        console.log(this.state.homecity);
+      //  console.log(this.state.homecity);
 
       });
+
+      
   }
 
   writeToFirebase = () => {

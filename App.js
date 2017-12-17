@@ -123,7 +123,7 @@ export default class App extends React.Component {
 
               <Tabs
                 key='Tabbar'
-                swipeEnabled
+                swipeEnabled={false}
                 showLabel={false}
                 tabs={true}
                 tabBarPosition='bottom'
@@ -133,7 +133,7 @@ export default class App extends React.Component {
      
             <Scene  
            key="HomeTab"
-           title="format-list-bulleted"
+           title="account"
            icon={TabIcon}>
 
 
