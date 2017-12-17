@@ -44,10 +44,22 @@ class HomePage extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let user = firebase.auth().currentUser;
     this.retrieveFromFirebase(user);
     //  this.writeToFirebase();
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null,
+        });
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    );
   }
 
 
@@ -61,6 +73,16 @@ class HomePage extends React.Component {
       console.log('AsyncStorage error: ' + error.message);
     }
   }
+      
+  writeToFirebaseGPS = () => {      
+    const { currentUser } = firebase.auth();
+    firebase.database().ref(`/guides/${this.state.name}`)
+      .set({
+        latitude: this.state.latitude,
+        longitude: this.state.longitude,
+      });
+
+  };
 
 
   getRef() {
@@ -100,8 +122,8 @@ class HomePage extends React.Component {
     firebase.database().ref(`/profiles/${currentUser.uid}/`)
       .push({
         homecity: 'nice nok',
-        latitude: 20,
-        longitude: 20,
+        latitude: this.state.latitude,
+        longitude: this.state.longitude,
         name: 'lol',
         phone: 232,
         sex: 'male',
@@ -111,6 +133,9 @@ class HomePage extends React.Component {
       });
 
   };
+
+
+
 
 
   render() {
@@ -127,11 +152,22 @@ class HomePage extends React.Component {
             <Card>
             <Button
             color="white"
-              onPress={() => this.writeToFirebase()}
-              title="Press me to push longitude to firebase"
+              onPress={() => this.writeToFirebaseGPS()}
+              title="Press to push coordinates to database"
  
             />
             </Card>
+
+            <Card>
+            <Button
+            color="white"
+              onPress={() => alert("long: " + this.state.longitude + " " + "lat: " + this.state.latitude ) }
+              title="Press to show your coordinates"
+ 
+            />
+            </Card>
+
+            
 
 
       </KeyboardAvoidingView>

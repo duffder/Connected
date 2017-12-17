@@ -14,6 +14,7 @@ class Maps extends React.Component {
     super(props)
   
     this.state = {
+
       initialPosition: {
         latitude: 55.676314,
         longitude: 12.569990,
@@ -49,19 +50,17 @@ class Maps extends React.Component {
   ComponentDidMount(){
 
     navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
-        if (this.map) {
-          this.map.animateToRegion({
-            latitude: coords.latitude,
-            longitude: coords.longitude,
-            latitudeDelta: 0.005,
-            longitudeDelta: 0.005
-          })
-        }
+      (position) => {
+        this.setState({
+          
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null,
+        });
       },
-      (error) => alert('Error: Are location services on?'),
-      { enableHighAccuracy: true }
-    )
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    );
 
 
   }
@@ -72,7 +71,7 @@ class Maps extends React.Component {
           <MapView
           style={styles.map}
           region={this.state.initialPosition}>
-          
+     
          
 
           

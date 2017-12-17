@@ -1,3 +1,4 @@
+import {Dimensions} from 'react-native';
 const React = require('react-native')
 const {StyleSheet} = React
 const constants = {
@@ -183,7 +184,15 @@ var styles = StyleSheet.create({
   drawerButton: {
     color: 'white',
     margin: 10
-  }
+  },
+
+  preview: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width
+  },
 
   
   

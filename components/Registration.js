@@ -17,8 +17,26 @@ class Registration extends React.Component {
              password: '',
              phone: '',
              sex: '' ,
+             longitude: '',
+             latitude: '',
              loading: false,
               error: '' };
+      }
+
+      componentDidMount(){
+
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            this.setState({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+              error: null,
+            });
+          },
+          (error) => this.setState({ error: error.message }),
+          { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+        );
+
       }
 
       renderButtonOrSpinner() {
@@ -35,13 +53,12 @@ class Registration extends React.Component {
 
       writeToFirebase = () => {
         const { currentUser } = firebase.auth();
-        
-        // const { longitude } = '30.30';
+      
         firebase.database().ref(`/profiles/${currentUser.uid}/`)
           .push({
             homecity: this.state.homecity,
-            latitude: 20,
-            longitude: 20,
+            latitude: this.state.latitude,
+            longitude: this.state.longitude,
             name: this.state.name,
             phone: this.state,phone,
             sex: this.state.sex,
@@ -50,66 +67,23 @@ class Registration extends React.Component {
     
       };
 
+
       
+      writeToFirebaseGPS = () => {      
+        firebase.database().ref(`/guides/${this.state.email}`)
+          .set({
+            latitude: this.state.latitude,
+            longitude: this.state.longitude,
+          });
+    
+      };
 
-
-      /*
-  userAuth() {
-        this.setState({ error: '', loading: true });
-        const { email, password } = this.state;
-        firebase.auth().signInWithEmailAndPassword(email, password)
       
-      
-        .then(() => {
-            this.setState({ error: '', loading: false });
-            firebase.auth().currentUser.getIdToken().then(function(idToken) {
-              console.log(idToken);
-              this.setState({ error: 'User already exists', loading: false });
-            })
-            .catch((err) => {
-              this.setState({ error: 'Something went wrong'+err, loading: false });
-            });
-          })
-
-
-
-        .catch((err) => {
-            //Login was not successful, let's create a new account
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(() => { 
-              this.setState({ error: '', loading: false });
-              firebase.auth().currentUser.getIdToken().then(function(idToken) {
-                AsyncStorage.setItem('id_token', idToken);
-            
-                writeToFirebase();
-
-                Alert.alert( 'Registration er successful');
-                Actions.HomePage();
-              })
-
-
-              .catch(() => {
-                this.setState({ error: 'Failed to obtain user ID token.', loading: false });
-              });
-            })
-
-
-            .catch((err) => {
-                this.setState({ error: 'Authentication failed. '+err, loading: false });
-            });
-
-
-        });
-
-
-
-      }
-      */
 
       
   userRegister() {
         this.setState({ error: '', loading: true });
-        const { email, password, name, phone, sex} = this.state;
+        const { email, password, name, phone, sex, latitude, longitude} = this.state;
         firebase.auth().createUserWithEmailAndPassword(email, password)
       
       
@@ -124,8 +98,8 @@ class Registration extends React.Component {
                
                 .set({
                 
-                  latitude: 20,
-                  longitude: 20,
+                  latitude: latitude,
+                  longitude: longitude,
                   name: name,
                   phone: phone,
                   sex: sex,
@@ -170,7 +144,8 @@ class Registration extends React.Component {
               AsyncStorage.setItem('id_token', idToken);
           
               writeToFirebase();
-
+              writeToFirebaseGPS();
+              
               Alert.alert( 'Registration er successful');
               Actions.HomePage();
             })
