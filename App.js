@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import DeckSwiper from './components/DeckSwiper';
 import DrawerComponent from './components/DrawerComponent';
 import Maps from './components/Maps';
+import Profile from './components/Profile';
 import Registration from './components/Registration';
 import { Actions } from 'react-native-router-flux';
 import SwipeDeck from 'react-native-elements/src/swipedeck/SwipeDeck';
@@ -91,8 +92,8 @@ export default class App extends React.Component {
       return (
         <Router>
           <Scene 
-          navigationBarStyle={{backgroundColor: 'grey'}}
-          navigationBarTitleImageStyle={{color: 'grey'}}
+          navigationBarStyle={{backgroundColor: 'white'}}
+          navigationBarTitleImageStyle={{color: 'white'}}
           key='root'>
             
             <Scene
@@ -117,7 +118,7 @@ export default class App extends React.Component {
           <Drawer
           hideNavBar 
           key="drawer"
-          activeTintColor='grey'
+          activeTintColor='white'
           contentComponent={DrawerComponent}
             >
 
@@ -128,7 +129,7 @@ export default class App extends React.Component {
                 showLabel={false}
                 tabs={true}
                 tabBarPosition='bottom'
-                tabBarStyle={{ backgroundColor: 'grey', color:'grey'  }}
+                tabBarStyle={{ backgroundColor: 'white', color:'grey'  }}
                 >
 
      
@@ -139,7 +140,7 @@ export default class App extends React.Component {
 
 
             <Scene 
-            component={HomePage}
+            component={Profile}
             initial={this.state.hasToken}
             key='HomePage'
             title='Home Page'

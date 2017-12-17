@@ -16,12 +16,12 @@ containerStyle: {
 
     borderBottomWidth: 1,
     padding: 5,
-    paddingLeft: 20,
-    paddingRight: 20,
-    backgroundColor: '#fff',
+    paddingLeft: 100,
+    paddingRight: 100,
+    backgroundColor: '#3498db',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    borderColor: '#ddd',
+    borderColor: '#3498db',
     position: 'relative'
 
 }

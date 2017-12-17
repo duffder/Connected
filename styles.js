@@ -7,7 +7,7 @@ const constants = {
 
 var styles = StyleSheet.create({
   container: {
-    backgroundColor: '#edf2f9',
+    backgroundColor: '#f2f2f2',
     justifyContent: 'center',
     height: '100%',
     padding: 50
