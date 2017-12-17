@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, Button } from "react-native";
 import Swiper from 'react-native-deck-swiper';
 import { Constants } from 'expo';
+import { Card, CardSection } from './common/';
 
 
 class DeckSwiper extends Component {
@@ -9,7 +10,10 @@ class DeckSwiper extends Component {
     constructor(props) {
     super(props);
     this.state = {
-      cards: ["1", "2", "3"],
+      cards: ["1", "2", "3",
+      "4", "5", "6",
+      "7", "8", "9",
+      "10"  ],
       swipedAllCards: false, //if all cards are swiped we need logic to stop
       //Initial state of direction is empty
       isSwipingBack: false, 
@@ -30,7 +34,17 @@ class DeckSwiper extends Component {
   renderCard = cardLabel => {
     return (
       <View style={styles.card}>
-        <Text style={styles.text}>{cardLabel}</Text> 
+      <Image
+        style={{
+          width: '100%',
+          height: '100%',
+          flex: 1,
+          position: 'absolute',
+        }}
+        source={require('./pictures/stickman.png')}
+      >
+     
+      </Image>
       </View>
     );
   };
@@ -38,6 +52,7 @@ class DeckSwiper extends Component {
   render() {
     return (
       <View style={styles.container}>
+    
         <Swiper
           style={styles.swiper}
           ref={swiper => {
@@ -45,6 +60,8 @@ class DeckSwiper extends Component {
           }}
           onSwiped={(cardIndex) => {console.log(cardIndex)}}
           cards={this.state.cards}
+          cardVerticalMargin={10}
+        
           cardIndex={this.state.cardIndex}
           renderCard={this.renderCard}
           onSwipedAll={this.onSwipedAllCards}
@@ -54,34 +71,39 @@ class DeckSwiper extends Component {
           animateCardOpacity
 
         >
+
         </Swiper>
+   
+
+
       </View >
+      
+   
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
-    backgroundColor: "#F5FCFF",
-    height: 50
+    flex: 5,
+    backgroundColor: "white",
+
+  },
+  swiper: {
+    backgroundColor: "white",
+
   },
 
   card: {
     flex: 1,
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: "#E8E8E8",
+ 
+    borderColor: "white",
     justifyContent: "center",
     backgroundColor: "white",
-    height: 20
+
   },
 
-  text: {
-    textAlign: "center",
-    fontSize: 50,
-    backgroundColor: "transparent"
-  },
+
 });
 
 module.exports = DeckSwiper; 

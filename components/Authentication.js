@@ -22,6 +22,7 @@ class Authentication extends Component {
   constructor() {
     super();
     this.state = { username: '', password: '', loading: false, error: '' };
+   
   }
 
   async userLogout() {

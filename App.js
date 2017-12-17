@@ -10,6 +10,7 @@ import DrawerComponent from './components/DrawerComponent';
 import Maps from './components/Maps';
 import Registration from './components/Registration';
 import { Actions } from 'react-native-router-flux';
+import SwipeDeck from 'react-native-elements/src/swipedeck/SwipeDeck';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBuseOK4Mrcl3miu_efGzfYaw6yjURHjmo",
