@@ -62,8 +62,11 @@ componentDidMount(){
 
     //Load data when we start
     this.listenForProfile(this.proRef.child(user.uid));
+
+  
+    
     //Setting local variables email and uid to variables stored in the firebase memory.
-        this.setState({email: user.email, uid: user.uid});
+        this.setState({email: user.email, uid: user.token, name: user.name});
 
 }
 
@@ -84,6 +87,7 @@ listenForProfile(proRef) {
         });
         
     });
+
 }
 
 //This method will update a profile when called.
@@ -111,7 +115,9 @@ updateProfile() {
 var user = {
 name: this.state.name,
 sex: this.state.sex,
-phone: this.state.phone
+phone: this.state.phone,
+uid: this.state.uid
+
 };
 
 //This is the last step, where we re-authenticate the user.
@@ -120,6 +126,7 @@ firebase.auth().currentUser.getIdToken().then(function(idToken){
     //We save the user in our storage, use json stringify because we got json object which is
     //incomptaible with storage
     AsyncStorage.setItem('user', JSON.stringify(user));
+    alert("User stored" + user)
     Alert.alert("Updated");
 
 })
@@ -156,7 +163,8 @@ this.setState({error: 'Fail' + err, loading: false});
 
   render() {
     return(
-      <KeyboardAvoidingView style={{backgroundColor: "#3498db ", flex: 1}} behavior='padding'>
+      <KeyboardAvoidingView style={   { backgroundColor: '#3498db',
+      flex: 1}} behavior='padding'>
         <View style={{backgroundColor: "#3498db"}}>
 
           <TitledInput

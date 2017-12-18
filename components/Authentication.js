@@ -4,6 +4,7 @@ import {Actions} from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import styles from '../styles';
 import { Card, CardSection } from './common/';
+import ButtonCustom from './ButtonCustom';
 import LogoImg from './LogoImg';
 
 const {
@@ -21,9 +22,11 @@ const {
 class Authentication extends Component {
   constructor() {
     super();
-    this.state = { username: '', password: '', loading: false, error: '' };
-   
+    this.state = { username: '', password: '', loading: false, error: '', uid: '', sex: '',  };
+    this.proRef = firebase.database().ref().child('profiles');
   }
+
+  
 
   async userLogout() {
     try {
@@ -35,6 +38,29 @@ class Authentication extends Component {
     }
   }
 
+
+
+  listenForProfile(proRef) {
+    proRef.once('value', (snap) => {
+      this.setState({
+        loading: false,
+        error: ''
+      });
+      var user = {
+        name: snap.val().name,
+        sex: snap.val().sex,
+        uid: snap.key,
+        token: ''
+      };
+      firebase.auth().currentUser.getIdToken().then(function(idToken) {
+        user.token = idToken;
+        AsyncStorage.setItem('user', JSON.stringify(user));
+      })
+      .catch((err) => {
+        this.setState({ error: 'Failed to obtain user ID token.'+err, loading: false });
+      });
+    });
+  }
 
 
   fetchUserData = () => {
@@ -121,9 +147,13 @@ class Authentication extends Component {
     const { username, password } = this.state;
     firebase.auth().signInWithEmailAndPassword(username, password)
     .then(() => {
+      var user = firebase.auth().currentUser;
+      this.listenForProfile(this.proRef.child(user.uid));
+  
       this.setState({ error: '', loading: false });
       firebase.auth().currentUser.getIdToken().then(function(idToken) {
         AsyncStorage.setItem('id_token', idToken);
+        
         console.log(idToken);
         Actions.HomePage();
       })
@@ -136,7 +166,6 @@ class Authentication extends Component {
             this.setState({ error: 'Failed to obtain user ID token.', loading: false });
           });
   }
-
 
 
 
@@ -157,15 +186,16 @@ class Authentication extends Component {
   render() {
     return (
 
-      <KeyboardAvoidingView style={styles.loginStyle}>
+      <KeyboardAvoidingView keyboardVerticalOffset ={-100}behavior = 'position' style={styles.loginStyle}>
     
-     <View style={{
+     <View   style={{
        paddingTop: 60,
        justifyContent: 'center',
        alignItems: 'center',
        
        }}>
       <LogoImg/>
+
       </View>
 
       <View>
@@ -175,7 +205,7 @@ class Authentication extends Component {
             style={{position: "absolute"}}
             label=''
             onChangeText={(username) => this.setState({username})}
-            placeholder='Username'
+            placeholder='E-mail'
             value={this.state.username}
           />
         </Card>
@@ -193,10 +223,16 @@ class Authentication extends Component {
 
           <Text style={styles.errorTextStyle}>{this.state.error}</Text>
           {this.renderButtonOrSpinner()}
+
+          
           <Button 
           color="white"
           onPress={() => Actions.Registration()}
            title="Register" />
+
+           
+
+
           
       </View>
       </KeyboardAvoidingView>
@@ -207,13 +243,14 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
     
 
     return (
+      
 
 
         <View style={styles.containerStyle}>
          
 
             <TextInput
-          
+            
             autoCorrect={false}
             placeholder={placeholder}
             secureTextEntry={secureTextEntry}
@@ -224,12 +261,27 @@ const TitledInput = ({ label, value, onChangeText, placeholder, secureTextEntry 
             returnKeyType='next'
             placeholderTextColor="white"
           />
+
+          
           
         </View>
    
     );
 };
 
+const inputStyles = StyleSheet.create({
+  passwordContainer: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderColor: '#000',
+    paddingBottom: 10,
+  },
+  userStyle: {
+    flex: 1,
+  },
+  
+  });
+  
 
 
 module.exports = Authentication;

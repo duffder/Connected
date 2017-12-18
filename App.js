@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import DeckSwiper from './components/DeckSwiper';
 import DrawerComponent from './components/DrawerComponent';
 import Maps from './components/Maps';
+import MapBeta from './components/MapBeta';
 import Profile from './components/Profile';
 import Registration from './components/Registration';
 import { Actions } from 'react-native-router-flux';
@@ -106,6 +107,23 @@ export default class App extends React.Component {
             />
 
 <Scene
+
+component={HomePage}
+hideNavBar={false}
+key='HP'
+title='Test Environment'
+/>
+
+
+<Scene
+
+component={MapBeta}
+hideNavBar={false}
+key='mapbeta'
+title='Map Beta'
+/>
+
+<Scene
             //Det er her det sner.
           
             component={Registration}
@@ -116,6 +134,7 @@ export default class App extends React.Component {
 
 
           <Drawer
+          drawerImage
           hideNavBar 
           key="drawer"
           activeTintColor='white'
@@ -129,7 +148,7 @@ export default class App extends React.Component {
                 showLabel={false}
                 tabs={true}
                 tabBarPosition='bottom'
-                tabBarStyle={{ backgroundColor: 'white', color:'grey'  }}
+                tabBarStyle={{ backgroundColor: 'white', color:'white'  }}
                 >
 
      

@@ -168,9 +168,11 @@ class Registration extends React.Component {
         return (
 
 
-            <View style={styles.loginStyle}>
+       <KeyboardAvoidingView keyboardVerticalOffset={-140} behavior='position' style={styles.loginStyle
+       
+       }>
 
-            <Card>
+ 
          <TitledInput
             style={{position: "absolute"}}
             onChangeText={(name) => this.setState({name})}
@@ -181,9 +183,9 @@ class Registration extends React.Component {
 
      />
 
-     </Card>
+     
 
-     <Card>
+
               <TitledInput
             style={{position: "absolute"}}
             onChangeText={(email) => this.setState({email})}
@@ -194,9 +196,7 @@ class Registration extends React.Component {
 
      />
 
-</Card>
 
-<Card>
 <TitledInput
             style={{position: "absolute"}}
             onChangeText={(password) => this.setState({password})}
@@ -207,10 +207,7 @@ class Registration extends React.Component {
 
      />
 
-     </Card>
 
-
-<Card>
 <TitledInput
             style={{position: "absolute"}}
             onChangeText={(phone) => this.setState({phone})}
@@ -221,10 +218,7 @@ class Registration extends React.Component {
 
      />
 
-     </Card>
-     
 
-     <Card>
 <TitledInput
             style={{position: "absolute"}}
             onChangeText={(sex) => this.setState({sex})}
@@ -235,7 +229,7 @@ class Registration extends React.Component {
 
      />
 
-     </Card>
+     
 
 
      
@@ -244,7 +238,7 @@ class Registration extends React.Component {
 <Text style={styles.errorTextStyle}>{this.state.error}</Text>
           {this.renderButtonOrSpinner()}
 
-         </View>
+         </KeyboardAvoidingView>
 
     
         );

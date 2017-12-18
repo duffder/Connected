@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactNative from 'react-native';
 import {Actions} from 'react-native-router-flux';
-import ActionButton from './ActionButton';
 import styles from '../styles';
 import { Card, CardSection } from './common/';
 
@@ -43,18 +42,34 @@ class DrawerComponent extends Component{
   render() {
     return (
       <View style={styles.drawer}>
-      <Card>
-        <Button 
-        color='white'
-        style={styles.drawerButton} onPress={this.userLogout.bind(this)} title="Log Out" />
-        </Card>
+ 
         
+      <Card>
+        <Button
+        color='white'
+        style={styles.drawerButton} onPress={Actions.HP} title="Tester" />
+        </Card>
+
+
         <Card>
           
         <Button
         color='white'
         style={styles.drawerButton} onPress={Actions.pop} title="Back" />
         </Card>
+
+        <Card>
+          
+          <Button
+          color='white'
+          style={styles.drawerButton} onPress={Actions.mapbeta} title="Map Beta" />
+          </Card>
+
+        
+        <Button 
+        color='white'
+        style={styles.drawerButton} onPress={this.userLogout.bind(this)} title="Log Out" />
+        
       </View>
     );
   }

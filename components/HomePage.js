@@ -46,8 +46,7 @@ class HomePage extends React.Component {
 
   componentDidMount() {
     let user = firebase.auth().currentUser;
-    this.retrieveFromFirebase(user);
-    //  this.writeToFirebase();
+
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -134,7 +133,15 @@ class HomePage extends React.Component {
 
   };
 
-
+  async userLogout() {
+    try {
+      await AsyncStorage.removeItem('id_token');
+      Alert.alert("Du er logget ud!")
+      Actions.Authentication();
+    } catch (error) {
+      console.log('AsyncStorage error: ' + error.message);
+    }
+  }
 
 
 
@@ -143,11 +150,6 @@ class HomePage extends React.Component {
       <KeyboardAvoidingView style={styles.loginStyle} >
        <WallpaperImg/>
 
-          <Card>
-            <Text style={styles.homepageText}>Name: {this.state.name} </Text>
-            <Text style={styles.homepageText}>Phone: {this.state.phone} </Text>
-            <Text style={styles.homepageText}>Sex: {this.state.sex} </Text>
-          </Card>
 
             <Card>
             <Button
@@ -163,6 +165,15 @@ class HomePage extends React.Component {
             color="white"
               onPress={() => alert("long: " + this.state.longitude + " " + "lat: " + this.state.latitude ) }
               title="Press to show your coordinates"
+ 
+            />
+            </Card>
+
+            <Card>
+            <Button
+            color="white"
+              onPress={() => this.userLogout()  }
+              title="Log out (When bugged)"
  
             />
             </Card>

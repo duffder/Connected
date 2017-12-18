@@ -1,0 +1,33 @@
+{
+    "rules": {
+
+      
+      "profiles": {
+        "$user_id": {
+
+         ".read": "$user_id === auth.uid",
+          ".write": "$user_id === auth.uid",
+        //  ".validate": "newData.hasChildren(['name', 'phone', 'homecity', 'sex', 'longitude', 'latitude'])",
+          //"longitude": { ".validate": "" },
+          //"latitude": { ".validate": ""}
+        }
+      },
+
+        "guides":{
+            ".read":"auth!= null", //user must be logged in to read
+            "$user:id":{
+            ".write": "$user_id === auth.uid",
+            ".validate": "root.child('profiles/'+$user_id).exists() && newData.hasChildren(['name', 'phone', 'homecity', 'sex', 'longitude', 'latitude'])"
+            
+            }
+
+
+        }
+
+
+
+    }
+  }
+  
+  
+  
