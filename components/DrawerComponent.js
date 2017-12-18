@@ -38,38 +38,52 @@ class DrawerComponent extends Component{
     }
   }
 
-  
-  render() {
-    return (
-      <View style={styles.drawer}>
- 
-        
-      <Card>
+  /*
+     <Card>
         <Button
         color='white'
         style={styles.drawerButton} onPress={Actions.HP} title="Tester" />
         </Card>
 
 
-        <Card>
-          
-        <Button
-        color='white'
-        style={styles.drawerButton} onPress={Actions.pop} title="Back" />
-        </Card>
+  */
 
-        <Card>
+  render() {
+    return (
+      <View style={styles.drawer}>
+ 
+        
+ 
+          
+   
+
+        <Card style ={{borderWidth: 20}}>
           
           <Button
           color='white'
           style={styles.drawerButton} onPress={Actions.mapbeta} title="Map Beta" />
           </Card>
 
+          <Card>
+          
+          <Button
+          color='white'
+          style={styles.drawerButton} onPress={Actions.about} title="About me" />
+          </Card>
+
+          <Card>
         
+          <Button
+        color='white'
+        style={styles.drawerButton} onPress={Actions.pop} title="Back" />
+        </Card>
+
+        <Card>
         <Button 
         color='white'
         style={styles.drawerButton} onPress={this.userLogout.bind(this)} title="Log Out" />
-        
+        </Card>
+
       </View>
     );
   }

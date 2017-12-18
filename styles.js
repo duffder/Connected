@@ -7,45 +7,14 @@ const constants = {
 
 var styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f2f2f2',
+ 
     justifyContent: 'center',
     height: '100%',
-    padding: 50
-  },
-  listContainer: {
-    backgroundColor: '#f2f2f2',
-    flex: 1,
-  },
-  listview: {
-    flex: 1,
-  },
-  liContainer: {
-    flex: 2,
-  },
-  liText: {
-    color: '#333',
-    fontSize: 16,
-  },
-  navbar: {
-    
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    borderBottomColor: '#eee',
-    borderColor: 'transparent',
-    borderWidth: 1,
-    justifyContent: 'center',
-    height: 44,
-    flexDirection: 'row',
-    width: '100%'
+
   },
 
-  navbarTitle: {
-    flex: 2,
-    color: '#444',
-    fontSize: 16,
-    fontWeight: '500',
-    textAlign: 'center'
-  },
+
+
   center: {
     textAlign: 'center',
   },
@@ -122,11 +91,6 @@ var styles = StyleSheet.create({
     justifyContent: 'center'
   },
   marker: {
-    height: 50,
-    width: 50,
-    borderWidth: 3,
-    borderColor: 'red',
-    borderRadius: 20 / 2,
     overflow: 'hidden',
     backgroundColor: '#007AFF'
   },
@@ -176,7 +140,7 @@ var styles = StyleSheet.create({
 
   drawer: {
     justifyContent: 'center',
-    backgroundColor: 'grey',
+    backgroundColor: '#3498db',
     height: '100%',
     flex: 1
   },

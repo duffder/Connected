@@ -85,21 +85,22 @@ class DeckSwiper extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    color: "D4D4D4",
     flex: 5,
-    backgroundColor: "white",
+    backgroundColor: "#D4D4D4",
 
   },
   swiper: {
-    backgroundColor: "white",
+    backgroundColor: "#D4D4D4",
 
   },
 
   card: {
     flex: 1,
- 
-    borderColor: "white",
+  
+    borderColor: "#D4D4D4",
     justifyContent: "center",
-    backgroundColor: "white",
+    backgroundColor: "#D4D4D4",
 
   },
 

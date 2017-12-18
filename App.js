@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import DeckSwiper from './components/DeckSwiper';
 import DrawerComponent from './components/DrawerComponent';
 import Maps from './components/Maps';
+import About from './components/About';
 import MapBeta from './components/MapBeta';
 import Profile from './components/Profile';
 import Registration from './components/Registration';
@@ -93,8 +94,6 @@ export default class App extends React.Component {
       return (
         <Router>
           <Scene 
-          navigationBarStyle={{backgroundColor: 'white'}}
-          navigationBarTitleImageStyle={{color: 'white'}}
           key='root'>
             
             <Scene
@@ -106,17 +105,18 @@ export default class App extends React.Component {
             title='Authentication'
             />
 
-<Scene
 
-component={HomePage}
+
+<Scene
+component={About}
 hideNavBar={false}
-key='HP'
-title='Test Environment'
+key='about'
+title='About Test'
 />
 
 
-<Scene
 
+<Scene
 component={MapBeta}
 hideNavBar={false}
 key='mapbeta'
@@ -134,10 +134,10 @@ title='Map Beta'
 
 
           <Drawer
-          drawerImage
-          hideNavBar 
+          drawerImage = {true}
+          hideNavBar={true}
           key="drawer"
-          activeTintColor='white'
+          activeTintColor='grey'
           contentComponent={DrawerComponent}
             >
 
@@ -181,7 +181,7 @@ title='Map Beta'
             <Scene
           component={DeckSwiper}
             key='Deck'
-            title='Deck'
+            title='Matchmaking'
             />
 
             </Scene>

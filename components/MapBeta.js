@@ -104,10 +104,12 @@ Find all guides in array and stringify them for use
   */
 
   findActor(key, guides){
-      alert("finding guides")
+   
     for (var i=0; i < guides.length; i++) {
       if (guides[i]._key === key) {
         return JSON.parse(JSON.stringify(guides[i]));
+       
+        alert(JSON.parse(JSON.stringify(guides[i])))
       }
     }
     return null;
@@ -122,15 +124,15 @@ Retreive all guides from firebase.
     this.coordRef.on('value', (snap) => {
     //Create array of items (Array of json objects)  
      var items = [];
-     
+    
      snap.forEach((item) => {
-
+       console.log("key: " + item.key)
         //First try to find yourself 
         var guide = this.findActor(item.key, this.state.guides);
       
         //if you are not in the database, push yourself into it.
         if(guide === null){
-            alert("guide is null")
+         
           items.push({
             name: item.val().name,
            

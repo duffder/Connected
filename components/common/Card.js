@@ -15,13 +15,14 @@ const Card = (props) => {
 const styles = {
     containerStyle: {
        
+        border: 1,
  
         borderBottomWidth: 0, //bottom segment has no width
 
         shadowOffset: { width: 0, height: 2 }, //Width(no shadow left or right side, height: some on the bottom)
         shadowColor: 'white',
         shadowOpacity: 0.2, //Make it see-through or not. (1 is solid)
-        shadowRadius: 2, //rounding off corner of shadow (same as border radius so it lines up)
+        shadowRadius: 5, //rounding off corner of shadow (same as border radius so it lines up)
         elevation: 1, //Elevation needed for android only
 
         position: 'relative', 
